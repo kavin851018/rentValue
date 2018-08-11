@@ -9,13 +9,29 @@
     <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
     <script>
         $(function() {
-            $( "#datepicker" ).datepicker();
+            $( "#slider-range" ).slider({
+                range: true,
+                min: 0,
+                max: 500,
+                values: [ 75, 300 ],
+                slide: function( event, ui ) {
+                    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                }
+            });
+            $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+                " - $" + $( "#slider-range" ).slider( "values", 1 ) );
         });
     </script>
 </head>
 <body>
 
-<p>日期：<input type="text" id="datepicker"></p>
+
+<p>
+    <label for="amount">价格范围：</label>
+    <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+</p>
+
+<div id="slider-range"></div>
 
 
 </body>
