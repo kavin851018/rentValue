@@ -145,6 +145,10 @@
                 </div>
 
             </div>
+            <div class="modal-body">
+                房屋描述
+
+            </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">

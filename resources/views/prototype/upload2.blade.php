@@ -51,6 +51,10 @@
         .igui-filter-checkbox label {
             cursor: pointer;
         }
+
+        .jumbotron{
+            padding:2rem  2rem;
+        }
     </style>
 
     <script>
@@ -93,6 +97,21 @@
 <div class="jumbotron text-center">
     <h1>評屋網 - 上傳物件 </h1>
     <p>透過資訊共享讓世界更美好!</p>
+
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link" href="/">首頁</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/upload">上傳物件</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">關於評屋網</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">贊助</a>
+        </li>
+    </ul>
 </div>
 
 <div class="container">
@@ -124,9 +143,9 @@
 
         </div>
         <div class="col-sm-4">
-            <h3>個人資訊</h3>
-            <p>待補充...</p>
-            <p>待補充...</p>
+            <h3>注意事項</h3>
+            <p>1.不要盜圖</p>
+            <p>2.不要作假</p>
         </div>
     </div>
 
