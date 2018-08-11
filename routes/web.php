@@ -11,7 +11,10 @@
 |
 */
 
-Route::get('/', function () {
+
+//protytpe
+
+Route::get('/index', function () {
     return view('prototype.index');
 });
 
@@ -21,4 +24,14 @@ Route::get('/jquery',function(){
 
 Route::get('/upload',function(){
     return view('prototype.upload2');
+});
+
+//網址規劃
+
+Route::get('/','HomeController@indexPage');
+
+Route::group(['prefix'=>'user'],function(){
+    Route::post('/user/evaluate','UserController@createValuation');
+    Route::get('/user/upload','UserController@showUploadPage');
+    Route::post('/user/upload','UserController@uploadObject');
 });
