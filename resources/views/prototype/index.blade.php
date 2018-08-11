@@ -14,6 +14,10 @@
             width: 100%;
             height: 100%;
         }
+
+    .jumbotron{
+        padding:2rem  2rem;
+    }
     </style>
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
@@ -43,6 +47,20 @@
 <div class="jumbotron text-center">
     <h1>評屋網</h1>
     <p>貼上你租的房間讓大家估價，或者為他人的房間估值!</p>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link" href="#">首頁</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/upload">上傳物件</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">關於評屋網</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">贊助</a>
+        </li>
+    </ul>
 </div>
 
 <div class="container">
@@ -161,7 +179,7 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">送出估值</button>
             </div>
 
         </div>

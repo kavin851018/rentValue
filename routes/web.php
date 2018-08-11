@@ -12,9 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('prototype.index');
 });
 
 Route::get('/jquery',function(){
-    return view('jquery');
+    return view('prototype.jquery');
+});
+
+Route::get('/upload',function(){
+    return view('prototype.upload2');
 });
