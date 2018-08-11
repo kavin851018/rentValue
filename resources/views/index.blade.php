@@ -18,19 +18,16 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <h3>Column 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+            <h3>平均估價: $3700</h3>
+            <img src="/image/1.jpg" class="img-thumbnail" alt="Cinque Terre">
         </div>
         <div class="col-sm-4">
-            <h3>Column 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+            <h3>平均估價: $3700</h3>
+            <img src="/image/2.jpg" class="img-thumbnail" alt="Cinque Terre">
         </div>
         <div class="col-sm-4">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+            <h3>平均估價: $3700</h3>
+            <img src="/image/3.jpg" class="img-thumbnail" alt="Cinque Terre">
         </div>
     </div>
 </div>
