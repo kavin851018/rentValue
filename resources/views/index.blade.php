@@ -15,6 +15,28 @@
             height: 100%;
         }
     </style>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+
+    <script>
+        $(function() {
+            $( "#slider-range" ).slider({
+                range: true,
+                min: 2500,
+                max: 8000,
+                values: [ 3000, 7000 ],
+                slide: function( event, ui ) {
+                    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                }
+            });
+            $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+                " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+        });
+    </script>
+
 </head>
 <body>
 
@@ -122,13 +144,19 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
+                <h4 class="modal-title">評估價值</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- Modal body -->
             <div class="modal-body">
-                Modal body..
+                <p>
+                    <label for="amount">價格範圍：</label>
+                    <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+                </p>
+
+                <div id="slider-range"></div>
+
             </div>
 
             <!-- Modal footer -->
