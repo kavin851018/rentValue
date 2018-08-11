@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class UserController extends Controller
 {
     //
@@ -15,7 +16,8 @@ class UserController extends Controller
 
 
     }
-    public function uploadObject(){
-
+    public function uploadObject(request $request){
+        
+        return view('index');
     }
 }

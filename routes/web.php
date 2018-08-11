@@ -26,12 +26,17 @@ Route::get('/upload',function(){
     return view('prototype.upload2');
 });
 
+Route::get('/uploadTest',function(){
+
+    return view('up');
+});
+
 //網址規劃
 
 Route::get('/','HomeController@indexPage');
 
 Route::group(['prefix'=>'user'],function(){
-    Route::post('/user/evaluate','UserController@createValuation');
-    Route::get('/user/upload','UserController@showUploadPage');
-    Route::post('/user/upload','UserController@uploadObject');
+    Route::post('/evaluate','UserController@createValuation');
+    Route::get('/upload','UserController@showUploadPage');
+    Route::post('/upload','UserController@uploadObject');
 });
