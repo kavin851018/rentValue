@@ -1,6 +1,7 @@
 @extends('master')
 @section('resource')
-
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
 @endsection
 @section('style')
 
@@ -25,6 +26,18 @@
                     </div>
                 </div>
 
+
+
+                <div class="form-group" id="test">
+                    <label for="resume" class="col-sm-2 control-label">Upload stuff</label>
+                    <div class="col-sm-8">
+                        <input type="file" name="fileupload" id="fileupload" />
+                    </div>
+                    <div class="col-sm-2">	<a class="btn btn-danger pull-right" id="removeFile">Remove</a>
+
+                    </div>
+                </div>
+
                 <script type="application/javascript">
                     $('#inputGroupFile02').change(function(e){
                         var fileNumber = e.target.files.length;
@@ -33,6 +46,34 @@
                             fileName+=e.target.files[i].name+",";
                         }
                         $('.custom-file-label').html(fileName);
+                    });
+
+                    $(document).ready(function () {
+                        $('#test').bootstrapValidator({
+                            live: 'enabled',
+                            feedbackIcons: {
+                                valid: 'glyphicon glyphicon-ok',
+                                invalid: 'glyphicon glyphicon-remove',
+                                validating: 'glyphicon glyphicon-refresh'
+                            },
+                            fields: {
+                                fileupload: {
+                                    validators: {
+                                        file: {
+                                            extension: 'doc,docx,pdf,zip,rtf',
+                                            type: 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/rtf,application/zip',
+                                            maxSize: 5 * 1024 * 1024, // 5 MB
+                                            message: 'The selected file is not valid, it should be (doc,docx,pdf,zip,rtf) and 5 MB at maximum.'
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
+                        $('#removeFile').on('click', function () {
+                            document.getElementById('fileupload').value = "";
+                            $('#test').bootstrapValidator('revalidateField', 'fileupload');
+                        });
                     });
                 </script>
 
