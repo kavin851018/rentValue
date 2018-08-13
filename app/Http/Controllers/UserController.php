@@ -16,8 +16,8 @@ class UserController extends Controller
 
 
     }
-    public function uploadObject(request $request){
-        
-        return view('index');
+    public function uploadObject(Request $request){
+        $path = $request->file('fileToUpload')->store('image');
+        return $path;
     }
 }
