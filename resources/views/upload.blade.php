@@ -7,7 +7,44 @@
 
 @endsection
 @section('script')
+    <script type="application/javascript">
+        $('#inputGroupFile02').change(function(e){
+            var fileNumber = e.target.files.length;
+            var fileName="";
+            for(var i=0;i<fileNumber;i++){
+                fileName+=e.target.files[i].name+",";
+            }
+            $('.custom-file-label').html(fileName);
+        });
 
+        $(document).ready(function () {
+            $('#test').bootstrapValidator({
+                live: 'enabled',
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    fileupload: {
+                        validators: {
+                            file: {
+                                extension: 'doc,docx,pdf,zip,rtf',
+                                type: 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/rtf,application/zip',
+                                maxSize: 5 * 1024 * 1024, // 5 MB
+                                message: 'The selected file is not valid, it should be (doc,docx,pdf,zip,rtf) and 5 MB at maximum.'
+                            }
+                        }
+                    }
+                }
+            });
+
+            $('#removeFile').on('click', function () {
+                document.getElementById('fileupload').value = "";
+                $('#test').bootstrapValidator('revalidateField', 'fileupload');
+            });
+        });
+    </script>
 @endsection
 @section('description')
     透過資訊共享讓世界更美好!
@@ -31,51 +68,14 @@
                 <div class="form-group" id="test">
                     <label for="resume" class="col-sm-2 control-label">Upload stuff</label>
                     <div class="col-sm-8">
-                        <input type="file" name="fileupload" id="fileupload" />
+                        <input type="file" name="fileupload" id="fileupload" multiple="true" />
                     </div>
                     <div class="col-sm-2">	<a class="btn btn-danger pull-right" id="removeFile">Remove</a>
 
                     </div>
                 </div>
 
-                <script type="application/javascript">
-                    $('#inputGroupFile02').change(function(e){
-                        var fileNumber = e.target.files.length;
-                        var fileName="";
-                        for(var i=0;i<fileNumber;i++){
-                            fileName+=e.target.files[i].name+",";
-                        }
-                        $('.custom-file-label').html(fileName);
-                    });
 
-                    $(document).ready(function () {
-                        $('#test').bootstrapValidator({
-                            live: 'enabled',
-                            feedbackIcons: {
-                                valid: 'glyphicon glyphicon-ok',
-                                invalid: 'glyphicon glyphicon-remove',
-                                validating: 'glyphicon glyphicon-refresh'
-                            },
-                            fields: {
-                                fileupload: {
-                                    validators: {
-                                        file: {
-                                            extension: 'doc,docx,pdf,zip,rtf',
-                                            type: 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/rtf,application/zip',
-                                            maxSize: 5 * 1024 * 1024, // 5 MB
-                                            message: 'The selected file is not valid, it should be (doc,docx,pdf,zip,rtf) and 5 MB at maximum.'
-                                        }
-                                    }
-                                }
-                            }
-                        });
-
-                        $('#removeFile').on('click', function () {
-                            document.getElementById('fileupload').value = "";
-                            $('#test').bootstrapValidator('revalidateField', 'fileupload');
-                        });
-                    });
-                </script>
 
 
                 <div class="form-group">

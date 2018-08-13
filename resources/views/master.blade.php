@@ -17,7 +17,7 @@
 
     @yield('resource')
     @yield('style')
-    @yield('script')
+
 
 </head>
 <body>
@@ -49,3 +49,4 @@
 </body>
 </html>
 
+@yield('script')
