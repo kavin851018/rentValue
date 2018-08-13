@@ -63,7 +63,7 @@
 @endsection
 @section('content')
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-12 col-md-9">
             <form action="/user/upload" method="post" enctype="multipart/form-data" id="test">
 
 
@@ -85,8 +85,8 @@
 
 
                 <div class="form-group">
-                    <label for="usr">實際租金</label>
-                    <input type="text" class="form-control" id="usr">
+                    <label for="rent">實際租金</label>
+                    <input type="number" class="form-control" id="rent">
                 </div>
                 <div class="form-group">
                     <label for="comment">居住情況</label>
@@ -98,7 +98,7 @@
 
             </form>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-0 col-md-3">
             <h3>注意事項</h3>
             <p>1.不要盜圖</p>
             <p>2.不要作假</p>

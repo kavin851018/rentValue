@@ -33,10 +33,10 @@
     <p>@yield('description')</p>
     <ul class="nav justify-content-end">
         <li class="nav-item">
-            <a class="nav-link" href="#">首頁</a>
+            <a class="nav-link" href="/">首頁</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">上傳物件</a>
+            <a class="nav-link" href="/user/upload">上傳物件</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">關於評屋網</a>
@@ -45,6 +45,8 @@
             <a class="nav-link disabled" href="#">贊助</a>
         </li>
     </ul>
+
+    
 </div>
 
 <div class="container">
