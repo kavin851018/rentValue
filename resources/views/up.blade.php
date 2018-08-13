@@ -8,10 +8,10 @@
     @endsection
 
 @section('content')
-<form action="/user/upload" method="post" enctype="multipart/form-data">
+<form action="/user/upload" method="post" enctype="multipart/form-data" id="test">
 
 
-    <div class="form-group" id="test">
+    <div class="form-group" >
         選擇要上傳的圖片:
     <div class="custom-file">
         <input type="file" class="custom-file-input" name="fileToUpload[]" id="fileupload" multiple="true" required>
@@ -64,10 +64,10 @@
                     'fileToUpload[]': {
                         validators: {
                             file: {
-                                extension: 'doc,docx,pdf,zip,rtf',
-                                type: 'application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/rtf,application/zip',
-                                maxSize: 5 * 1024 * 1024, // 5 MB
-                                message: 'The selected file is not valid, it should be (doc,docx,pdf,zip,rtf) and 5 MB at maximum.'
+                                extension: 'jpeg,png,jpg',
+                                type: 'image/jpeg,image/png,image/jpg',
+                                maxSize: 2048 * 1024,
+                                message: 'The selected file is not valid'
                             }
                         }
                     }
