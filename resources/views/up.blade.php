@@ -9,28 +9,22 @@
 
 @section('content')
 <form action="/user/upload" method="post" enctype="multipart/form-data">
-    Select image to upload:
+
 
     <div class="form-group" id="test">
+        選擇要上傳的圖片:
     <div class="custom-file">
-        <input type="file" class="custom-file-input" name="fileToUpload[]" id="validatedCustomFile" multiple="true" required>
-        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-        <div class="invalid-feedback">Example invalid custom file feedback</div>
+        <input type="file" class="custom-file-input" name="fileToUpload[]" id="fileupload" multiple="true" required>
+        <label class="custom-file-label" for="validatedCustomFile">選擇檔案...</label>
+
     </div>
     </div>
-
-    <div class="form-group" >
-        <label for="resume" class="col-sm-2 control-label">Upload stuff</label>
-        <div class="col-sm-8">
-            <input type="file" name="fileToUpload[]" id="fileupload" multiple="true" />
-        </div>
-        <div class="col-sm-2">	<a class="btn btn-danger pull-right" id="removeFile">Remove</a>
-
-        </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="送出" name="submit">
     </div>
 
 
-    <input type="submit" class="btn btn-primary" value="Upload Image" name="submit">
+
     {!! csrf_field() !!}
 </form>
     @endsection
@@ -84,6 +78,15 @@
                 document.getElementById('fileupload').value = "";
                 $('#test').bootstrapValidator('revalidateField', 'fileupload');
             });
+        });
+
+        $('#fileupload').change(function(e){
+            var fileNumber = e.target.files.length;
+            var fileName="";
+            for(var i=0;i<fileNumber;i++){
+                fileName+=e.target.files[i].name+",";
+            }
+            $('.custom-file-label').html(fileName);
         });
     </script>
     @endsection
