@@ -85,12 +85,12 @@
 
 
                 <div class="form-group">
-                    <label for="rent">實際租金</label>
-                    <input type="number" class="form-control" id="rent">
+                    <label for="price">實際租金</label>
+                    <input type="number" class="form-control" id="price" name="price">
                 </div>
                 <div class="form-group">
-                    <label for="comment">居住情況</label>
-                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                    <label for="description">居住情況</label>
+                    <textarea class="form-control" rows="5" id="description" name="description"></textarea>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="送出" name="send">

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Controllers\Controller;
+use Validator;
+use App\Myweb\Entity\NewObject;
+
 
 class UserController extends Controller
 {
@@ -17,6 +21,9 @@ class UserController extends Controller
         return view('upload');
     }
     public function uploadObject(Request $request){
+        NewObject::create($request->all());
+
+
 
         if($request->hasFile('fileToUpload')){
             foreach($request->fileToUpload as $file){
