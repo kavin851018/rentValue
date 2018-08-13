@@ -14,7 +14,7 @@ class UserController extends Controller
 
     public function showUploadPage(){
 
-
+        return view('upload');
     }
     public function uploadObject(Request $request){
 
