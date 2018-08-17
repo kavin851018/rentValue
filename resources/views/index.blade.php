@@ -79,23 +79,37 @@
 
                         <!-- Indicators -->
                         <ul class="carousel-indicators">
-                            <li data-target="#demo" data-slide-to="0" class="active"></li>
-                            <li data-target="#demo" data-slide-to="1"></li>
-                            <li data-target="#demo" data-slide-to="2"></li>
-                            
+
+
+                            @foreach($Object->images as $i => $image)
+                                @if($i==0)
+                                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                @else
+                                    <li data-target="#demo" data-slide-to="{{$i}}"></li>
+                                @endif
+
+                                @endforeach
+
                         </ul>
 
                         <!-- The slideshow -->
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="/image/1.jpg" alt="Los Angeles" width="1100" height="500">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/image/2.jpg" alt="Chicago" width="1100" height="500">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/image/3.jpg" alt="New York" width="1100" height="500">
-                            </div>
+
+
+
+
+
+                            @foreach($Object->images as $i => $image)
+                                @if($i==0)
+                                    <div class="carousel-item active">
+                                        <img src="/{{$image->imagePath}}" alt="Los Angeles" width="1100" height="500">
+                                    </div>
+                                @else
+                                    <div class="carousel-item">
+                                        <img src="/{{$image->imagePath}}" alt="Chicago" width="1100" height="500">
+                                    </div>
+                                @endif
+                                @endforeach
                         </div>
 
                         <!-- Left and right controls -->
@@ -109,7 +123,7 @@
 
                 </div>
                 <div class="modal-body">
-                    房屋描述
+                    {{$Object->description}}
 
                 </div>
 
