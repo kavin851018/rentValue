@@ -31,6 +31,7 @@ Route::get('/uploadTest',function(){
     return view('up');
 });
 
+
 //網址規劃
 
 Route::get('/','HomeController@indexPage');
