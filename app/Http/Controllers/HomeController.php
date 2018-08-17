@@ -16,8 +16,9 @@ class HomeController extends Controller
 
 
         foreach($ObjectAll as $object){
-            $image=NewObject::find($object->oid)->images()->get();
-            $object->images = $image;
+            $images=NewObject::find($object->oid)->images()->get();
+            $object->images = $images;
+            $object->firstImage = $images->get('0');
         }
 
 

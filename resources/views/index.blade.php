@@ -45,10 +45,11 @@
     </div>
     <div class="row">
         @foreach($ObjectAll as $Object)
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <h3>平均估價: $3700</h3>
 
-            <img src="/image/1.jpg" class="img-thumbnail" alt="Cinque Terre">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <h3>平均估價: ${{$Object->price}}</h3>
+
+            <img src="/{{$Object->firstImage['imagePath']}}" class="img-thumbnail" alt="Cinque Terre">
             <!-- Button to Open the Modal -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1-{{$Object->oid}}">
                 查看圖片
@@ -68,7 +69,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">平均估價: $3700</h4>
+                    <h4 class="modal-title">平均估價: ${{$Object->price}}</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -81,6 +82,7 @@
                             <li data-target="#demo" data-slide-to="0" class="active"></li>
                             <li data-target="#demo" data-slide-to="1"></li>
                             <li data-target="#demo" data-slide-to="2"></li>
+                            
                         </ul>
 
                         <!-- The slideshow -->
