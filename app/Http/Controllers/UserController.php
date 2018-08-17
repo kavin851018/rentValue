@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Validator;
 use App\Myweb\Entity\NewObject;
 use App\Myweb\Entity\NewImage;
+use Image;
 
 
 class UserController extends Controller
@@ -28,17 +29,21 @@ class UserController extends Controller
 
         if($request->hasFile('fileToUpload')){
             foreach($request->fileToUpload as $file){
+
+
                 
-                $filename = $file->getClientOriginalName();
-                $filesize = $file->getClientSize();
+//                $filename = $file->getClientOriginalName();
+//                $filesize = $file->getClientSize();
 //                $file->storeAs('image2',$filename);
-                $path = $file->store('image');
+//                $path = $file->store('image');
 //                print_r($filename."<br>");
 //                print_r($path);
-                $path="storage/".$path;
-                $data = new imageTable;
-                $data->objectId = $lastInsertId;
-                $data->imagePath = $path;
+//                $path="storage/".$path;
+
+                $resize = Image::make($file)->fit(1280,720)->encode('jpg');
+                $hash = md5($resize->__toString());
+                $path = "storage/image/{$hash}.jpg";
+                $resize->save(public_path($path));
                 NewImage::create(['objectId'=>$lastInsertId,'imagePath'=>$path]);
             }
         }
@@ -50,7 +55,3 @@ class UserController extends Controller
     }
 }
 
-class imageTable{
-    public $objectId ;
-    public $imagePath ;
-}
