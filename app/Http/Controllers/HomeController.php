@@ -22,8 +22,10 @@ class HomeController extends Controller
 
 
         $binding = [
-            'ObjectAll'=>$ObjectAll, 'image'=>$image
+            'ObjectAll'=>$ObjectAll,
         ];
-        return view('/allObject',$binding);
+        return view('/index',$binding);
     }
+
+
 }

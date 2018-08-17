@@ -41,44 +41,28 @@
 
 @section('content')
     <div class="row">
+        {{$ObjectAll->links()}}
+    </div>
+    <div class="row">
+        @foreach($ObjectAll as $Object)
         <div class="col-sm-6 col-md-4 col-lg-3">
             <h3>平均估價: $3700</h3>
+
             <img src="/image/1.jpg" class="img-thumbnail" alt="Cinque Terre">
             <!-- Button to Open the Modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1-{{$Object->oid}}">
                 查看圖片
             </button>
             <!-- Button to Open the Modal -->
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModa2">
-                點我評價
-            </button>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <h3>平均估價: $3700</h3>
-            <img src="/image/2.jpg" class="img-thumbnail" alt="Cinque Terre">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                查看圖片
-            </button>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModa2">
-                點我評價
-            </button>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-            <h3>平均估價: $3700</h3>
-            <img src="/image/3.jpg" class="img-thumbnail" alt="Cinque Terre">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                查看圖片
-            </button>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModa2">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal2-{{$Object->oid}}">
                 點我評價
             </button>
         </div>
 
 
-    </div>
 
     <!-- The Modal -->
-    <div class="modal fade" id="myModal">
+    <div class="modal fade" id="myModal1-{{$Object->oid}}">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
@@ -137,7 +121,7 @@
     </div>
 
     <!-- The Modal2 -->
-    <div class="modal" id="myModa2">
+    <div class="modal" id="myModal2-{{$Object->oid}}">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -166,5 +150,10 @@
             </div>
         </div>
     </div>
+
+            @endforeach
+
+    </div>
+
     @endsection
 
