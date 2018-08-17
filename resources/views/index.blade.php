@@ -17,23 +17,7 @@
     </style>
     @endsection
 
-@section('script')
-    <script>
-        $(function() {
-            $( "#slider-range" ).slider({
-                range: true,
-                min: 2500,
-                max: 8000,
-                values: [ 3000, 7000 ],
-                slide: function( event, ui ) {
-                    $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-                }
-            });
-            $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-                " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-        });
-    </script>
-    @endsection
+
 
 @section('description')
     貼上你租的房間讓大家估價，或者為他人的房間估值!
@@ -150,11 +134,11 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <p>
-                        <label for="amount">價格範圍：</label>
-                        <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+                        <label for="amount-{{$Object->oid}}">價格範圍：</label>
+                        <input type="text" id="amount-{{$Object->oid}}" style="border:0; color:#f6931f; font-weight:bold;">
                     </p>
 
-                    <div id="slider-range"></div>
+                    <div id="slider-range-{{$Object->oid}}"></div>
 
                 </div>
 
@@ -166,6 +150,22 @@
             </div>
         </div>
     </div>
+           
+                <script>
+                    $(function() {
+                        $( "#slider-range-{{$Object->oid}}" ).slider({
+                            range: true,
+                            min: 2500,
+                            max: 8000,
+                            values: [ 3000, 7000 ],
+                            slide: function( event, ui ) {
+                                $( "#amount-{{$Object->oid}}" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                            }
+                        });
+                        $( "#amount-{{$Object->oid}}" ).val( "$" + $( "#slider-range-{{$Object->oid}}" ).slider( "values", 0 ) +
+                            " - $" + $( "#slider-range-{{$Object->oid}}" ).slider( "values", 1 ) );
+                    });
+                </script>
 
             @endforeach
 
