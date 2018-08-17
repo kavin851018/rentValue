@@ -12,6 +12,10 @@ class NewObject extends Model{
         "price",
         "description",
     ];
+
+    public function images(){
+        return $this->hasMany('App\Myweb\Entity\NewImage','objectId');
+    }
 }
 
 

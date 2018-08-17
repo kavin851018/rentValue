@@ -13,10 +13,13 @@
             <th>
                 description
             </th>
+            <th>
+                photo
+            </th>
         </tr>
         </thead>
         <tbody>
-            @foreach($ObjectPaginate as $Object)
+            @foreach($ObjectAll as $Object)
                 <tr>
                     <td>
                         {{$Object->oid}}
@@ -27,12 +30,19 @@
                     <td>
                         {{$Object->description}}
                     </td>
+                    <td>
+                        @foreach($Object->images as $image)
+                            <img src="/{{$image->imagePath}}" class="img-thumbnail">
+
+                            @endforeach
+                    </td>
                 </tr>
                 @endforeach
         </tbody>
 
     </table>
 
-    {{$ObjectPaginate->links()}}
+    {{$ObjectAll->links()}}
+
 
     @endsection
