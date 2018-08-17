@@ -150,7 +150,7 @@
             </div>
         </div>
     </div>
-           
+
                 <script>
                     $(function() {
                         $( "#slider-range-{{$Object->oid}}" ).slider({

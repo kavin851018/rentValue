@@ -28,7 +28,7 @@ class UserController extends Controller
 
         if($request->hasFile('fileToUpload')){
             foreach($request->fileToUpload as $file){
-
+                
                 $filename = $file->getClientOriginalName();
                 $filesize = $file->getClientSize();
 //                $file->storeAs('image2',$filename);
