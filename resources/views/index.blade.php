@@ -52,7 +52,7 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <div id="demo" class="carousel slide" data-ride="carousel">
+                    <div id="demo-{{$Object->oid}}" class="carousel slide" data-ride="carousel">
 
                         <!-- Indicators -->
                         <ul class="carousel-indicators">
@@ -60,9 +60,9 @@
 
                             @foreach($Object->images as $i => $image)
                                 @if($i==0)
-                                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                    <li data-target="#demo-{{$Object->oid}}" data-slide-to="0" class="active"></li>
                                 @else
-                                    <li data-target="#demo" data-slide-to="{{$i}}"></li>
+                                    <li data-target="#demo-{{$Object->oid}}" data-slide-to="{{$i}}"></li>
                                 @endif
 
                                 @endforeach
@@ -90,10 +90,10 @@
                         </div>
 
                         <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <a class="carousel-control-prev" href="#demo-{{$Object->oid}}" data-slide="prev">
                             <span class="carousel-control-prev-icon"></span>
                         </a>
-                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <a class="carousel-control-next" href="#demo-{{$Object->oid}}" data-slide="next">
                             <span class="carousel-control-next-icon"></span>
                         </a>
                     </div>
