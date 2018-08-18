@@ -43,7 +43,7 @@
     <div class="modal fade" id="myModal1-{{$Object->oid}}">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-
+            <form action="/sendValue" method="POST" id="form-{{$Object->oid}}">
                 <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">平均估價: ${{$Object->price}}</h4>
@@ -107,8 +107,9 @@
 
 
                     <p>
+                        <input type="hidden" name="_token"  value="{{csrf_token()}}">
                         <label for="amount-{{$Object->oid}}">價格範圍：</label>
-                        <input type="text" id="amount-{{$Object->oid}}" style="border:0; color:#4286f4; font-weight:bold;">
+                        <input type="text" name="amount" id="amount-{{$Object->oid}}" style="border:0; color:#4286f4; font-weight:bold;">
                     </p>
 
                     <div id="slider-range-{{$Object->oid}}"></div>
@@ -116,10 +117,10 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">送出估值</button>
+                    <button type="submit" class="btn btn-primary" >送出估值</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
                 </div>
-
+            </form>
             </div>
         </div>
     </div>
@@ -140,6 +141,37 @@
                         });
                         $( "#amount-{{$Object->oid}}" ).val( "$" + $( "#slider-range-{{$Object->oid}}" ).slider( "values", 0 ) +
                             " - $" + $( "#slider-range-{{$Object->oid}}" ).slider( "values", 1 ) );
+                        // process the form
+                        $('#form-{{$Object->oid}}').submit(function(event) {
+
+                            // get the form data
+                            // there are many ways to get this data using jQuery (you can use the class or id also)
+                            var formData = {
+                                'amount'              : $('input[name=amount]').val(),
+                                '_token'              : $('input[name=_token').val()
+                            };
+
+                            // process the form
+                            $.ajax({
+                                type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
+                                url         : '/sendValue', // the url where we want to POST
+                                data        : formData, // our data object
+                                dataType    : 'json', // what type of data do we expect back from the server
+                                encode          : true
+                            })
+                            // using the done promise callback
+                                .done(function(data) {
+
+                                    // log data to the console so we can see
+                                    console.log(data);
+
+                                    // here we will handle errors and validation messages
+                                });
+
+                            // stop the form from submitting the normal way and refreshing the page
+                            event.preventDefault();
+                        });
+
                     });
                 </script>
 
