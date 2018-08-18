@@ -40,7 +40,8 @@ class UserController extends Controller
 //                print_r($path);
 //                $path="storage/".$path;
 
-                $resize = Image::make($file)->fit(1280,720)->encode('jpg');
+//                $resize = Image::make($file)->fit(1280,720)->encode('jpg');
+                $resize = Image::make($file)->encode('jpg');
                 $hash = md5($resize->__toString());
                 $path = "storage/image/{$hash}.jpg";
                 $resize->save(public_path($path));
