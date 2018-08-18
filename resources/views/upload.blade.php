@@ -68,7 +68,7 @@
 
 
                 <div class="form-group" >
-                    選擇要上傳的圖片:
+                    <label for="fileToUpload[]">選擇要上傳的圖片:</label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name="fileToUpload[]" id="fileupload" multiple="true" required>
                         <label class="custom-file-label" for="validatedCustomFile">選擇檔案...</label>
