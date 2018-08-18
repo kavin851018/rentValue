@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Myweb\Entity\NewObject;
+use App\Myweb\Entity\NewValue;
 
 class HomeController extends Controller
 {
@@ -41,6 +42,12 @@ class HomeController extends Controller
             $toDB['lowerPrice']=$new[0];
             $toDB['HigherPrice']=$new[1];
             $toDB['oid']=$request->oid;
+
+            $newValue = new NewValue;
+            $newValue -> oid = $toDB['oid'];
+            $newValue -> lowerPrice = $toDB['lowerPrice'];
+            $newValue -> HigherPrice = $toDB['HigherPrice'];
+            $newValue -> save();
 
 
             $data['amount']=$request->amount;
