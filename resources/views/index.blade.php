@@ -33,15 +33,8 @@
         <div class="col-sm-6 col-md-4 col-lg-3">
             <h3>平均估價: ${{$Object->price}}</h3>
 
-            <img src="/{{$Object->firstImage['imagePath']}}" class="img-thumbnail" alt="Cinque Terre">
+            <img src="/{{$Object->firstImage['imagePath']}}" class="img-thumbnail" alt="Cinque Terre" data-toggle="modal" data-target="#myModal1-{{$Object->oid}}">
             <!-- Button to Open the Modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1-{{$Object->oid}}">
-                查看圖片
-            </button>
-            <!-- Button to Open the Modal -->
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal2-{{$Object->oid}}">
-                點我評價
-            </button>
         </div>
 
 
@@ -110,9 +103,20 @@
                     {{$Object->description}}
 
                 </div>
+                <div class="modal-body">
+
+
+                    <p>
+                        <label for="amount-{{$Object->oid}}">價格範圍：</label>
+                        <input type="text" id="amount-{{$Object->oid}}" style="border:0; color:#f6931f; font-weight:bold;">
+                    </p>
+
+                    <div id="slider-range-{{$Object->oid}}"></div>
+                </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">送出估值</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
                 </div>
 
@@ -120,44 +124,16 @@
         </div>
     </div>
 
-    <!-- The Modal2 -->
-    <div class="modal" id="myModal2-{{$Object->oid}}">
-        <div class="modal-dialog">
-            <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">評估價值</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <p>
-                        <label for="amount-{{$Object->oid}}">價格範圍：</label>
-                        <input type="text" id="amount-{{$Object->oid}}" style="border:0; color:#f6931f; font-weight:bold;">
-                    </p>
-
-                    <div id="slider-range-{{$Object->oid}}"></div>
-
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">送出估值</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
                 <script>
                     $(function() {
                         $( "#slider-range-{{$Object->oid}}" ).slider({
                             range: true,
-                            min: 2500,
-                            max: 8000,
+                            min: 2000,
+                            max: 11000,
                             values: [ 3000, 7000 ],
+                            step:100,
                             slide: function( event, ui ) {
                                 $( "#amount-{{$Object->oid}}" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
                             }
