@@ -108,7 +108,7 @@
 
                     <p>
                         <label for="amount-{{$Object->oid}}">價格範圍：</label>
-                        <input type="text" id="amount-{{$Object->oid}}" style="border:0; color:#f6931f; font-weight:bold;">
+                        <input type="text" id="amount-{{$Object->oid}}" style="border:0; color:#4286f4; font-weight:bold;">
                     </p>
 
                     <div id="slider-range-{{$Object->oid}}"></div>
@@ -116,7 +116,7 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">送出估值</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">送出估值</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
                 </div>
 
