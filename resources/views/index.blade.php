@@ -108,6 +108,7 @@
 
                     <p>
                         <input type="hidden" name="_token"  value="{{csrf_token()}}">
+                        <input type="hidden" name="oid"  value="{{$Object->oid}}">
                         <label for="amount-{{$Object->oid}}">價格範圍：</label>
                         <input type="text" name="amount" id="amount-{{$Object->oid}}" style="border:0; color:#4286f4; font-weight:bold;">
                     </p>
@@ -148,7 +149,8 @@
                             // there are many ways to get this data using jQuery (you can use the class or id also)
                             var formData = {
                                 'amount'              : $('input[name=amount]').val(),
-                                '_token'              : $('input[name=_token').val()
+                                '_token'              : $('input[name=_token').val(),
+                                'oid'                 : $('input[name=oid').val()
                             };
 
                             // process the form

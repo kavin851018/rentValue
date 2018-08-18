@@ -36,8 +36,11 @@ class HomeController extends Controller
             $new[1]=trim($new[1]);
             $new[0]=explode("$",$new[0])[1];
             $new[1]=explode("$",$new[1])[1];
+            $new[2]=$request->oid;
 
-            
+            $toDB['lowerPrice']=$new[0];
+            $toDB['HigherPrice']=$new[1];
+            $toDB['oid']=$request->oid;
 
 
             $data['amount']=$request->amount;
