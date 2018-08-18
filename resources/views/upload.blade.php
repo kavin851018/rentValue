@@ -52,8 +52,13 @@
             var fileNumber = e.target.files.length;
             var fileName="";
             for(var i=0;i<fileNumber;i++){
-                fileName+=e.target.files[i].name+",";
+                fileName+=e.target.files[i].name+"  ,  ";
+                if(fileName.length>10){
+                    fileName=fileName+"and "+(fileNumber-i-1)+" more images.......";
+                    break;
+                }
             }
+
             $('.custom-file-label').html(fileName);
         });
     </script>
@@ -70,7 +75,7 @@
                 <div class="form-group" >
                     <label for="fileToUpload[]">選擇要上傳的圖片:</label>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="fileToUpload[]" id="fileupload" multiple="true" required>
+                        <input type="file" class="custom-file-input" name="fileToUpload[]" id="fileupload" multiple="true"  required>
                         <label class="custom-file-label" for="validatedCustomFile">選擇檔案...</label>
 
                     </div>
