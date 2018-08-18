@@ -11,8 +11,13 @@
     <style>
         /* Make the image fully responsive */
         .carousel-inner img {
-            width: 100%;
-            height: 100%;
+            /*width: 100%;*/
+            /*height: 100%;*/
+            width: auto;
+
+            height: 400px;
+
+            max-height: 400px;
         }
     </style>
     @endsection
@@ -79,11 +84,11 @@
                             @foreach($Object->images as $i => $image)
                                 @if($i==0)
                                     <div class="carousel-item active">
-                                        <img src="/{{$image->imagePath}}" alt="Los Angeles" width="1100" height="500">
+                                        <img src="/{{$image->imagePath}}" alt="Los Angeles" class="img-responsive center-block">
                                     </div>
                                 @else
                                     <div class="carousel-item">
-                                        <img src="/{{$image->imagePath}}" alt="Chicago" width="1100" height="500">
+                                        <img src="/{{$image->imagePath}}" alt="Chicago" class="img-responsive center-block">
                                     </div>
                                 @endif
                                 @endforeach
