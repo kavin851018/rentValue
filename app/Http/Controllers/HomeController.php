@@ -27,6 +27,16 @@ class HomeController extends Controller
         ];
         return view('/index',$binding);
     }
+    public function sendValue(Request $request){
+        $amount=$request->amount;
+        
+
+        $data['amount']=$request->amount;
+        $data['success']=true;
+        echo json_encode($data);
+
+
+    }
 
 
 }

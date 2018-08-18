@@ -35,6 +35,7 @@ Route::get('/uploadTest',function(){
 //網址規劃
 
 Route::get('/','HomeController@indexPage');
+Route::post('/sendValue','HomeController@sendValue');
 
 Route::group(['prefix'=>'user'],function(){
     Route::post('/evaluate','UserController@createValuation');

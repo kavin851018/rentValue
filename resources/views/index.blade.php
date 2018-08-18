@@ -116,7 +116,7 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer">
+                <div class="modal-footer" id="modal-footer-{{$Object->oid}}">
                     <button type="submit" class="btn btn-primary" >送出估值</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
                 </div>
@@ -164,6 +164,19 @@
 
                                     // log data to the console so we can see
                                     console.log(data);
+                                    $('#modal-footer-{{$Object->oid}}').removeClass('has-error has-success');
+                                    $('#modal-footer-{{$Object->oid}}').children(".help-block").remove();
+                                    if(!data.success){
+
+                                            $('#modal-footer-{{$Object->oid}}').addClass('has-error');
+                                            $('#modal-footer-{{$Object->oid}}').prepend("<div class='help-block mr-auto'>"+"送出估值發生錯誤，請重整頁面"+"</div>");
+
+
+                                    }
+                                    else{
+                                        $('#modal-footer-{{$Object->oid}}').addClass('has-success');
+                                        $('#modal-footer-{{$Object->oid}}').prepend("<div class='help-block mr-auto'>"+"送出估值成功!"+"</div>");
+                                    }
 
                                     // here we will handle errors and validation messages
                                 });
