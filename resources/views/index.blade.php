@@ -34,7 +34,12 @@
 
 @section('content')
     <div class="row">
-        {{$ObjectAll->links()}}
+        <div class="col-md-4">
+            {{$ObjectAll->links()}}
+        </div>
+        <div class="col-md-8">
+
+        </div>
     </div>
     <div class="row">
         @foreach($ObjectAll as $Object)
