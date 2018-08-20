@@ -58,7 +58,11 @@
             <form action="/sendValue" method="POST" id="form-{{$Object->oid}}">
                 <!-- Modal Header -->
                 <div class="modal-header">
+                    @if($Object->lowerAvg!=0)
                     <h4 class="modal-title" id="modal-price-{{$Object->oid}}">平均低價: ${{$Object->lowerAvg}} &nbsp;&nbsp; 平均高價: ${{$Object->higherAvg}}</h4>
+                    @else
+                        <h4 class="modal-title" id="modal-price-{{$Object->oid}}">平均低價: 尚無 &nbsp;&nbsp; 平均高價: 尚無</h4>
+                        @endif
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -200,7 +204,7 @@
                                         $('#modal-footer-{{$Object->oid}}').prepend("<div class='help-block mr-auto'>"+"送出估值成功!"+"</div>");
                                         $('#price-{{$Object->oid}}').html("平均低價: $"+data.lowerAvg+"<br>平均高價: $"+data.higherAvg);
                                         $('#modal-price-{{$Object->oid}}').html("平均低價: $"+data.lowerAvg+"&nbsp;&nbsp;平均高價: $"+data.higherAvg);
-                                        $('#myModal1-{{$Object->oid}}').modal('toggle');
+                                      
 
 
 
