@@ -25,15 +25,17 @@
         .footer {
             bottom: 0;
             width: 100%;
-            height: 100px;
-            line-height: 100px;
+            height: 5rem;
+            line-height: 5rem;
             background-color: #eee;
+            position:fixed;
 
 
         }
-        .main{
-            height:calc(100vh - 100px );
+        body{
+            padding-bottom:8rem;
         }
+
     </style>
 
 </head>
@@ -61,7 +63,7 @@
     
 </div>
 
-<div class="container main">
+<div class="container ">
     @yield('content')
 </div>
 
