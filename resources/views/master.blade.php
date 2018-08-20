@@ -23,15 +23,17 @@
             padding:2rem  2rem;
         }
         .footer {
-            margin-top: 3em;
             bottom: 0;
             width: 100%;
             height: 100px;
             line-height: 100px;
             background-color: #eee;
 
-        }
 
+        }
+        .main{
+            height:calc(100vh - 100px );
+        }
     </style>
 
 </head>
@@ -59,9 +61,10 @@
     
 </div>
 
-<div class="container">
+<div class="container main">
     @yield('content')
 </div>
+
 
 <footer class="footer">
     <div class="container">

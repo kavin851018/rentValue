@@ -18,6 +18,8 @@
     .jumbotron{
         padding:2rem  2rem;
     }
+
+
     </style>
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
