@@ -52,11 +52,16 @@
             var fileNumber = e.target.files.length;
             var fileName="";
             for(var i=0;i<fileNumber;i++){
-                fileName+=e.target.files[i].name+"  ,  ";
-                if(fileName.length>10){
-                    fileName=fileName+"and "+(fileNumber-i-1)+" more images.......";
+                if(i==0){
+                    fileName=e.target.files[i].name;
+                    continue;
+                }
+                if(fileName.length>10&&i!=0){
+                    fileName=fileName+"  and "+(fileNumber-i)+" more images.......";
                     break;
                 }
+                fileName+="  ,  "+e.target.files[i].name;
+
             }
 
             $('.custom-file-label').html(fileName);
