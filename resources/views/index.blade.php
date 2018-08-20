@@ -115,20 +115,14 @@
                     </div>
 
                 </div>
+                <div class="modal-body " style="white-space:pre-line;">{{$Object->description}}</div>
                 <div class="modal-body">
-                    {{$Object->description}}
-
-                </div>
-                <div class="modal-body">
-
-
                     <p>
                         <input type="hidden" name="_token"  value="{{csrf_token()}}">
                         <input type="hidden" name="oid" id="oid-{{$Object->oid}}"  value="{{$Object->oid}}">
                         <label for="amount-{{$Object->oid}}">價格範圍：</label>
                         <input type="text" name="amount" id="amount-{{$Object->oid}}" style="border:0; color:#4286f4; font-weight:bold;">
                     </p>
-
                     <div id="slider-range-{{$Object->oid}}"></div>
                 </div>
 
