@@ -22,6 +22,7 @@
         .jumbotron{
             padding:2rem  2rem;
         }
+
     </style>
 
 </head>

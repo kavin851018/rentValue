@@ -19,6 +19,10 @@
 
             max-height: 400px;
         }
+        .img-thumbnail{
+            width:300px;
+            height:180px;
+        }
     </style>
     @endsection
 
@@ -139,6 +143,8 @@
                             $('#modal-footer-{{$Object->oid}}').children(".help-block").remove();
                         });
 
+                        
+
                         $( "#slider-range-{{$Object->oid}}" ).slider({
                             range: true,
                             min: 2000,
@@ -180,7 +186,7 @@
 
                                             $('#modal-footer-{{$Object->oid}}').addClass('has-error');
                                             $('#modal-footer-{{$Object->oid}}').prepend("<div class='help-block mr-auto'>"+"送出估值發生錯誤，即將重整頁面"+"</div>");
-                                            
+                                            setTimeout(function(){ location.reload(); }, 1000);
 
 
                                     }
@@ -189,6 +195,7 @@
                                         $('#modal-footer-{{$Object->oid}}').prepend("<div class='help-block mr-auto'>"+"送出估值成功!"+"</div>");
                                         $('#price-{{$Object->oid}}').html("平均低價: $"+data.lowerAvg+"<br>平均高價: $"+data.higherAvg);
                                         $('#modal-price-{{$Object->oid}}').html("平均低價: $"+data.lowerAvg+"&nbsp;&nbsp;平均高價: $"+data.higherAvg);
+                                        $('#myModal1-{{$Object->oid}}').modal('toggle');
 
 
 
