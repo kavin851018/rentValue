@@ -17,7 +17,11 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js"></script>
 @endsection
 @section('style')
-
+<style>
+    .footer{
+        position: fixed;
+    }
+</style>
 @endsection
 @section('script')
     <script>
@@ -72,7 +76,7 @@
     透過資訊共享讓世界更美好!
 @endsection
 @section('content')
-    <div class="row">
+    <div class="row main">
         <div class="col-sm-12 col-md-9">
             <form action="/user/upload" method="post" enctype="multipart/form-data" id="test">
 

@@ -22,6 +22,15 @@
         .jumbotron{
             padding:2rem  2rem;
         }
+        .footer {
+            margin-top: 3em;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+            background-color: #eee;
+
+        }
 
     </style>
 
@@ -54,7 +63,11 @@
     @yield('content')
 </div>
 
-
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted pull-right">由Kavin Flynn製作</span>
+    </div>
+</footer>
 </body>
 </html>
 
