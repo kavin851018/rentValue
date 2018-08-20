@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Myweb\Entity\NewObject;
 use App\Myweb\Entity\NewValue;
+use DB;
 
 class HomeController extends Controller
 {
 
     //
     public function indexPage(){
-        $row_per_page = 10 ;
+        $row_per_page = 12 ;
         $ObjectPaginate = NewObject::OrderBy('oid','desc')->paginate($row_per_page);
         $ObjectAll = NewObject::OrderBy('oid','desc')->paginate($row_per_page);
 
@@ -20,6 +21,11 @@ class HomeController extends Controller
             $images=NewObject::find($object->oid)->images()->get();
             $object->images = $images;
             $object->firstImage = $images->get('0');
+            $lowerAvg = DB::table('value')->where('oid',$object->oid)->avg('lowerPrice');
+            $higherAvg = DB::table('value')->where('oid',$object->oid)->avg('higherPrice');
+            $object->lowerAvg=number_format($lowerAvg);
+            $object->higherAvg=number_format($higherAvg);
+
         }
 
 
@@ -30,7 +36,7 @@ class HomeController extends Controller
     }
     public function sendValue(Request $request){
 
-
+        try{
             $amount=$request->amount;
             $new = explode("-",$amount);
             $new[0]=trim($new[0]);
@@ -49,12 +55,22 @@ class HomeController extends Controller
             $newValue -> HigherPrice = $toDB['HigherPrice'];
             $newValue -> save();
 
+            $lowerAvg = DB::table('value')->where('oid',$toDB['oid'])->avg('lowerPrice');
+            $higherAvg = DB::table('value')->where('oid',$toDB['oid'])->avg('higherPrice');
 
             $data['amount']=$request->amount;
             $data['success']=true;
             $data['new']=$new;
+            $data['lowerAvg']=number_format($lowerAvg);
+            $data['higherAvg']=number_format($higherAvg);
 
             echo json_encode($data);
+        }
+        catch(\Exeption $e){
+            $data['success']=false;
+            echo json_encode($data);
+        }
+
 
 
 

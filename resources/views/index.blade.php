@@ -36,9 +36,9 @@
         @foreach($ObjectAll as $Object)
 
         <div class="col-sm-6 col-md-4 col-lg-3">
-            <h3>平均估價: ${{$Object->price}}</h3>
+            <h5 id="price-{{$Object->oid}}">平均低價: ${{$Object->lowerAvg}}<br>平均高價: ${{$Object->higherAvg}}   </h5>
 
-            <img src="/{{$Object->firstImage['imagePath']}}" class="img-thumbnail" alt="Cinque Terre" data-toggle="modal" data-target="#myModal1-{{$Object->oid}}">
+            <img src="/{{$Object->firstImage['imagePath']}}" class="img-thumbnail" id="thumbnail-{{$Object->oid}}" alt="Cinque Terre" data-toggle="modal" data-target="#myModal1-{{$Object->oid}}">
             <!-- Button to Open the Modal -->
         </div>
 
@@ -135,6 +135,10 @@
 
                 <script>
                     $(function() {
+                        $("#thumbnail-{{$Object->oid}}").click(function(){
+                            $('#modal-footer-{{$Object->oid}}').children(".help-block").remove();
+                        });
+
                         $( "#slider-range-{{$Object->oid}}" ).slider({
                             range: true,
                             min: 2000,
@@ -149,7 +153,6 @@
                             " - $" + $( "#slider-range-{{$Object->oid}}" ).slider( "values", 1 ) );
                         // process the form
                         $('#form-{{$Object->oid}}').submit(function(event) {
-
                             // get the form data
                             // there are many ways to get this data using jQuery (you can use the class or id also)
                             var formData = {
@@ -183,6 +186,8 @@
                                     else{
                                         $('#modal-footer-{{$Object->oid}}').addClass('has-success');
                                         $('#modal-footer-{{$Object->oid}}').prepend("<div class='help-block mr-auto'>"+"送出估值成功!"+"</div>");
+                                        $('#price-{{$Object->oid}}').html("平均低價: $"+data.lowerAvg+"<br>平均高價: $"+data.higherAvg);
+
                                     }
 
                                     // here we will handle errors and validation messages

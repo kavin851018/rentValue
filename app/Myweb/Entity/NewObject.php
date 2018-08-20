@@ -16,6 +16,10 @@ class NewObject extends Model{
     public function images(){
         return $this->hasMany('App\Myweb\Entity\NewImage','objectId');
     }
+
+    public function values(){
+        return $this->hasMany('App\Myweb\Entity\NewValue','oid');
+    }
 }
 
 
