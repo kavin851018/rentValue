@@ -57,12 +57,16 @@ class HomeController extends Controller
 
             $lowerAvg = DB::table('value')->where('oid',$toDB['oid'])->avg('lowerPrice');
             $higherAvg = DB::table('value')->where('oid',$toDB['oid'])->avg('higherPrice');
+            $realValue = DB::table('object')->where('oid',$toDB['oid'])->pluck('price');
+
 
             $data['amount']=$request->amount;
             $data['success']=true;
             $data['new']=$new;
             $data['lowerAvg']=number_format($lowerAvg);
             $data['higherAvg']=number_format($higherAvg);
+            $data['realValue']=$realValue;
+
 
             echo json_encode($data);
         }

@@ -52,7 +52,7 @@
 
 
     <!-- The Modal -->
-    <div class="modal fade" id="myModal1-{{$Object->oid}}">
+    <div class="modal " id="myModal1-{{$Object->oid}}">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
             <form action="/sendValue" method="POST" id="form-{{$Object->oid}}">
@@ -134,7 +134,7 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer" id="modal-footer-{{$Object->oid}}">
-                    <button type="submit" class="btn btn-primary" >送出估值</button>
+                    <button type="submit" id="submit-Value-Button-{{$Object->oid}}" class="btn btn-primary" >送出估值</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
                 </div>
             </form>
@@ -203,8 +203,9 @@
                                         $('#modal-footer-{{$Object->oid}}').addClass('has-success');
                                         $('#modal-footer-{{$Object->oid}}').prepend("<div class='help-block mr-auto'>"+"送出估值成功!"+"</div>");
                                         $('#price-{{$Object->oid}}').html("平均低價: $"+data.lowerAvg+"<br>平均高價: $"+data.higherAvg);
-                                        $('#modal-price-{{$Object->oid}}').html("平均低價: $"+data.lowerAvg+"&nbsp;&nbsp;平均高價: $"+data.higherAvg);
-                                      
+                                        $('#modal-price-{{$Object->oid}}').html("平均低價: $"+data.lowerAvg+"&nbsp;&nbsp;&nbsp;&nbsp;平均高價: $"+data.higherAvg+"&nbsp;&nbsp;&nbsp;&nbsp;實際租金: $"+data.realValue);
+                                        $('#submit-Value-Button-{{$Object->oid}}').remove();
+
 
 
 
