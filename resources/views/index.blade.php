@@ -40,8 +40,11 @@
         @foreach($ObjectAll as $Object)
 
         <div class="col-sm-6 col-md-4 col-lg-3">
+            @if($Object->lowerAvg!=0)
             <h5 id="price-{{$Object->oid}}">平均低價: ${{$Object->lowerAvg}}<br>平均高價: ${{$Object->higherAvg}}   </h5>
-
+            @else
+                <h5 id="price-{{$Object->oid}}">平均低價: 尚無<br>平均高價: 尚無</br></h5>
+                @endif
             <img src="/{{$Object->firstImage['imagePath']}}" class="img-thumbnail" id="thumbnail-{{$Object->oid}}" alt="Cinque Terre" data-toggle="modal" data-target="#myModal1-{{$Object->oid}}">
             <!-- Button to Open the Modal -->
         </div>
@@ -143,7 +146,9 @@
                             $('#modal-footer-{{$Object->oid}}').children(".help-block").remove();
                         });
 
-                        
+
+
+
 
                         $( "#slider-range-{{$Object->oid}}" ).slider({
                             range: true,
