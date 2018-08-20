@@ -51,7 +51,7 @@
             <form action="/sendValue" method="POST" id="form-{{$Object->oid}}">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">平均估價: ${{$Object->price}}</h4>
+                    <h4 class="modal-title" id="modal-price-{{$Object->oid}}">平均低價: ${{$Object->lowerAvg}} &nbsp;&nbsp; 平均高價: ${{$Object->higherAvg}}</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -179,7 +179,8 @@
                                     if(!data.success){
 
                                             $('#modal-footer-{{$Object->oid}}').addClass('has-error');
-                                            $('#modal-footer-{{$Object->oid}}').prepend("<div class='help-block mr-auto'>"+"送出估值發生錯誤，請重整頁面"+"</div>");
+                                            $('#modal-footer-{{$Object->oid}}').prepend("<div class='help-block mr-auto'>"+"送出估值發生錯誤，即將重整頁面"+"</div>");
+                                            
 
 
                                     }
@@ -187,6 +188,11 @@
                                         $('#modal-footer-{{$Object->oid}}').addClass('has-success');
                                         $('#modal-footer-{{$Object->oid}}').prepend("<div class='help-block mr-auto'>"+"送出估值成功!"+"</div>");
                                         $('#price-{{$Object->oid}}').html("平均低價: $"+data.lowerAvg+"<br>平均高價: $"+data.higherAvg);
+                                        $('#modal-price-{{$Object->oid}}').html("平均低價: $"+data.lowerAvg+"&nbsp;&nbsp;平均高價: $"+data.higherAvg);
+
+
+
+
 
                                     }
 
