@@ -32,6 +32,8 @@ Route::get('/uploadTest',function(){
 });
 
 
+
+
 //網址規劃
 
 Route::get('/','HomeController@indexPage');
@@ -42,3 +44,5 @@ Route::group(['prefix'=>'user'],function(){
     Route::get('/upload','UserController@showUploadPage');
     Route::post('/upload','UserController@uploadObject');
 });
+
+Route::get('/getIP','UserController@getIP');
