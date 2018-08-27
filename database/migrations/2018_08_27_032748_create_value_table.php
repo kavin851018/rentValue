@@ -15,9 +15,9 @@ class CreateValueTable extends Migration
     {
         Schema::create('value', function (Blueprint $table) {
             $table->increments('vid');
-            $table->unsigned('oid');
-            $table->unsigned('lowerPrice');
-            $table->unsigned('higherPrice');
+            $table->unsignedInteger('oid');
+            $table->unsignedInteger('lowerPrice');
+            $table->unsignedInteger('higherPrice');
             $table->timestamps();
         });
     }
