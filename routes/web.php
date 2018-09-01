@@ -43,6 +43,11 @@ Route::group(['prefix'=>'user'],function(){
     Route::post('/evaluate','UserController@createValuation');
     Route::get('/upload','UserController@showUploadPage');
     Route::post('/upload','UserController@uploadObject');
+    Route::get('/auth/sign-in','UserController@signInPage');
+    Route::post('/auth/sign-in','UserController@signInProcess');
+    Route::get('/auth/sign-out','UserController@signOut');
+    Route::get('/auth/sign-up','UserController@signUpPage');
+    Route::post('/auth/sign-up','UserController@signUpProcess');
 });
 
 Route::get('/getIP','UserController@getIP');

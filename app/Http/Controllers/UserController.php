@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 use Validator;
 use App\Myweb\Entity\NewObject;
 use App\Myweb\Entity\NewImage;
+use App\Myweb\Entity\NewUser;
 use Image;
+use Hash;
 
 
 class UserController extends Controller
@@ -81,6 +83,62 @@ class UserController extends Controller
         $data['hostname']=$hostname;
         return view('getIP',$data);
 
+    }
+
+    public function signInpage(){
+    	return view('auth.signIn');
+    }
+
+    public function signInProcess(){
+    	$input = request()->all();
+    	$rules = [
+    		'email'=>['required','max:150','email',],
+		    'password'=>['required','min:6'],
+	    ];
+
+    	$validator = Validator::make($input,$rules);
+
+    	if($validator->fails()){
+    		return redirect('/user/auth/sign-in')->withErrors($validator)->withInput();
+	    }
+
+	    $User = NewUser::where('email',$input['email'])->firstOrFail();
+    	$is_password_correct = Hash::check($input['password'],$User->password);
+    	if(!$is_password_correct){
+    		$error_message=['msg'=>['密碼驗證錯誤'],];
+    		return redirect('/user/auth/sign-in')->withErrors($error_message)->withInput();
+	    }
+
+	    session()->put('user_id',$User->id);
+    	return redirect()->intended('/');
+
+    }
+
+    public function signUpPage(){
+    	return view('auth.signUp');
+    }
+
+    public function signUpProcess(){
+    	$input = request()->all();
+
+    	$rules =['email'=>['required','max:150','email',],'password'=>['required','same:password_confirmation','min:6',],'select'=>['required','in:G,A'],];
+    	$validator = Validator::make($input,$rules);
+    	if($validator->fails()){
+    		return redirect('/user/auth/sign-up')->withErrors($validator)->withInput();
+	    }
+
+	    $input['password']=Hash::make($input['password']);
+
+    	$NewUser = NewUser::create($input);
+	    return redirect('/');
+    	var_dump($input);
+    	exit;
+
+    }
+
+    public function signOut(){
+    	session()->forget('user_id');
+    	return redirect('/');
     }
 }
 

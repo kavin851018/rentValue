@@ -56,6 +56,13 @@
             <a class="nav-link" href="#">關於評屋網</a>
         </li>
         <li class="nav-item">
+            @if(session()->has('user_id'))
+            <a class="nav-link" href="/user/auth/sign-out">登出</a>
+                @else
+                <a class="nav-link" href="/user/auth/sign-in">登入</a>
+                @endif
+        </li>
+        <li class="nav-item">
             <a class="nav-link disabled" href="#">贊助</a>
         </li>
     </ul>
