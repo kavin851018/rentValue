@@ -164,7 +164,14 @@
                             dataType    : 'json', // what type of data do we expect back from the server
                             encode          : true
                         }).done(function(data){
-                            console.log(data);
+                            console.log(data.success);
+                            if(data.success){
+                                alert(1);
+                            }
+                            else{
+                                alert(2);
+                            }
+
                         });
 
                     });
