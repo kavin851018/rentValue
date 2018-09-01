@@ -72,7 +72,11 @@ class UserController extends Controller
             $ipaddress = $_SERVER['REMOTE_ADDR'];
         else
             $ipaddress = 'UNKNOWN';
-        $hostname=$_SERVER['REMOTE_HOST'];
+        if(isset($_SERVER['REMOTE_HOST']))
+	        $hostname=$_SERVER['REMOTE_HOST'];
+        else
+	        $hostname='UNKNOWN';
+
         $data['ipaddress']=$ipaddress;
         $data['hostname']=$hostname;
         return $data;
