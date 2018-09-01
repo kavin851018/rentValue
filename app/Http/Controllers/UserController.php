@@ -11,6 +11,7 @@ use App\Myweb\Entity\NewImage;
 use App\Myweb\Entity\NewUser;
 use Image;
 use Hash;
+use DB;
 
 
 class UserController extends Controller
@@ -139,6 +140,31 @@ class UserController extends Controller
     public function signOut(){
     	session()->forget('user_id');
     	return redirect('/');
+    }
+
+    public function manageObject(){
+	    $row_per_page = 12 ;
+	    $ObjectPaginate = NewObject::OrderBy('oid','desc')->paginate($row_per_page);
+	    $ObjectAll = NewObject::OrderBy('oid','desc')->paginate($row_per_page);
+
+
+	    foreach($ObjectAll as $object){
+
+		    $images=NewObject::find($object->oid)->images()->get();
+		    $object->images = $images;
+		    $object->firstImage = $images->get('0');
+		    $lowerAvg = DB::table('value')->where('oid',$object->oid)->avg('lowerPrice');
+		    $higherAvg = DB::table('value')->where('oid',$object->oid)->avg('higherPrice');
+		    $object->lowerAvg=number_format($lowerAvg);
+		    $object->higherAvg=number_format($higherAvg);
+
+	    }
+
+
+	    $binding = [
+		    'ObjectAll'=>$ObjectAll,
+	    ];
+	    return view('manage',$binding);
     }
 }
 
