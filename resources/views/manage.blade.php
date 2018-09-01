@@ -133,7 +133,7 @@
 
                             <!-- Modal footer -->
                             <div class="modal-footer" id="modal-footer-{{$Object->oid}}">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">刪除</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" id="delete-{{$Object->oid}}">刪除</button>
                                 <button type="submit" id="submit-Value-Button-{{$Object->oid}}" class="btn btn-primary" >送出估值</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
                             </div>
@@ -148,6 +148,25 @@
                 $(function() {
                     $("#thumbnail-{{$Object->oid}}").click(function(){
                         $('#modal-footer-{{$Object->oid}}').children(".help-block").remove();
+                    });
+
+                    $("#delete-{{$Object->oid}}").click(function(){
+                        // alert(1);
+                        var Data = {
+                            'oid':'{{$Object->oid}}',
+                            '_token':'{{csrf_token()}}'
+                        };
+
+                        $.ajax({
+                            type        : 'delete', // define the type of HTTP verb we want to use (POST for our form)
+                            url         : '/user/manage/delete', // the url where we want to POST
+                            data        : Data, // our data object
+                            dataType    : 'json', // what type of data do we expect back from the server
+                            encode          : true
+                        }).done(function(data){
+                            console.log(data);
+                        });
+
                     });
 
 

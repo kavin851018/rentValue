@@ -49,6 +49,7 @@ Route::group(['prefix'=>'user'],function(){
     Route::get('/auth/sign-up','UserController@signUpPage');
     Route::post('/auth/sign-up','UserController@signUpProcess');
     Route::get('/manage','UserController@manageObject')->middleware(['user.auth.admin']);
+	Route::delete('/manage/delete','UserController@deleteObject')->middleware(['user.auth.admin']);
 });
 
 Route::get('/getIP','UserController@getIP');

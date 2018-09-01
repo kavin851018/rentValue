@@ -72,7 +72,7 @@ class UserController extends Controller
         else if(isset($_SERVER['HTTP_FORWARDED']))
             $ipaddress = $_SERVER['HTTP_FORWARDED'];
         else if(isset($_SERVER['REMOTE_ADDR']))
-            $ipaddress = $_SERVER['REMOTE_ADDR'];//代理伺服器proxy的i[
+            $ipaddress = $_SERVER['REMOTE_ADDR'];//代理伺服器proxy的ip
         else
             $ipaddress = 'UNKNOWN';
         if(isset($_SERVER['REMOTE_HOST']))
@@ -165,6 +165,10 @@ class UserController extends Controller
 		    'ObjectAll'=>$ObjectAll,
 	    ];
 	    return view('manage',$binding);
+    }
+    public function deleteObject(){
+    	$data['cool']=true;
+	    echo json_encode($data);
     }
 }
 
