@@ -79,7 +79,7 @@ class UserController extends Controller
 
         $data['ipaddress']=$ipaddress;
         $data['hostname']=$hostname;
-        return $data;
+        return view('getIP',$data);
 
     }
 }
