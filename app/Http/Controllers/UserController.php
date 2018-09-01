@@ -63,13 +63,13 @@ class UserController extends Controller
         else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
             $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
         else if(isset($_SERVER['HTTP_X_FORWARDED']))
-            $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+            $ipaddress = $_SERVER['HTTP_X_FORWARDED'];//代理伺服器的使用者真實ip
         else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
             $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
         else if(isset($_SERVER['HTTP_FORWARDED']))
             $ipaddress = $_SERVER['HTTP_FORWARDED'];
         else if(isset($_SERVER['REMOTE_ADDR']))
-            $ipaddress = $_SERVER['REMOTE_ADDR'];
+            $ipaddress = $_SERVER['REMOTE_ADDR'];//代理伺服器proxy的i[
         else
             $ipaddress = 'UNKNOWN';
         if(isset($_SERVER['REMOTE_HOST']))
