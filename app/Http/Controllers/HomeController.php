@@ -11,10 +11,18 @@ class HomeController extends Controller
 {
 
     //
-    public function indexPage(){
+    public function indexPage(Request $request){
         $row_per_page = 12 ;
-        $ObjectPaginate = NewObject::OrderBy('oid','desc')->paginate($row_per_page);
-        $ObjectAll = NewObject::OrderBy('oid','desc')->paginate($row_per_page);
+//        $ObjectPaginate = NewObject::OrderBy('oid','desc')->paginate($row_per_page);
+
+
+        $keyword = $request->input('description');
+        if($keyword!=""){
+	        $ObjectAll =   NewObject::OrderBy('oid','desc')->where('description','like','%'.$keyword.'%')->paginate($row_per_page);
+        }
+        else{
+	        $ObjectAll = NewObject::OrderBy('oid','desc')->paginate($row_per_page);
+        }
 
 
         foreach($ObjectAll as $object){
@@ -32,6 +40,7 @@ class HomeController extends Controller
 
         $binding = [
             'ObjectAll'=>$ObjectAll,
+	        'keyword'=>$keyword
         ];
         return view('/index',$binding);
     }

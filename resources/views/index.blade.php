@@ -40,7 +40,7 @@
         <div class="col-md-6">
             <form>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="description" placeholder="輸入關鍵字搜索"/>
+                    <input type="text" class="form-control" name="description" placeholder="輸入關鍵字搜索" value="{{$keyword}}"/>
                 </div>
         </div>
         <div class="col-md-2">
