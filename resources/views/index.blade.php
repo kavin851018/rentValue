@@ -61,9 +61,9 @@
                     $(function(){
                         $( "#slider-range-search" ).slider({
                             range: true,
-                            min: 2000,
+                            min: 0,
                             max: 11000,
-                            values: [ 3000, 7000 ],
+                            values: [ 0, 11000 ],
                             step:100,
                             slide: function( event, ui ) {
                                 $( "#amount-search" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );

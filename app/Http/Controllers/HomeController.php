@@ -17,8 +17,17 @@ class HomeController extends Controller
 
 	    $amount=$request->amount;
         $keyword = $request->input('description');
-        if($keyword!=""&&){
+        if($keyword!=""&&$amount!=""){
 	        $ObjectAll =   NewObject::OrderBy('oid','desc')->where('description','like','%'.$keyword.'%')->paginate($row_per_page);
+        }
+        else if($keyword==""&&$amount!=""){
+	        $new = explode("-",$amount);
+	        $new[0]=trim($new[0]);
+	        $new[1]=trim($new[1]);
+	        $lowerprice=explode("$",$new[0])[1];
+	        $higherprice=explode("$",$new[1])[1];
+	        echo $lowerprice;
+	        $ObjectAll =   NewObject::OrderBy('oid','desc')->whereBetween('price', array($lowerprice, $higherprice))->paginate($row_per_page);
         }
         else{
 	        $ObjectAll = NewObject::OrderBy('oid','desc')->paginate($row_per_page);
