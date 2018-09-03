@@ -37,8 +37,15 @@
         <div class="col-md-4">
             {{$ObjectAll->links()}}
         </div>
-        <div class="col-md-8">
-
+        <div class="col-md-6">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="description" placeholder="輸入關鍵字搜索"/>
+                </div>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-default">搜尋</button>
+            </form>
         </div>
     </div>
     <div class="row">
