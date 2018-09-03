@@ -37,15 +37,70 @@
     @endsection
 
 @section('content')
+
+
     <div class="row">
         <div class="col-md-4">
             {{$ObjectAll->links()}}
         </div>
-        <div class="col-md-6">
-            <form>
-                <div class="form-group">
+        <div class="col-md-1">
+            <button type="button" id="toggle" class="btn btn-default searchbox">依實價</button>
+        </div>
+        <div class="col-md-5">
+            <form action="" method="GET">
+                <div id="searchinput" class="form-group">
                     <input type="text" class="form-control searchbox" name="description" placeholder="輸入關鍵字搜索" value="{{$keyword}}"/>
                 </div>
+
+                <label for="amount-search" id="amount-search-label">價格範圍：</label>
+                <input type="text" name="amount" id="amount-search" style="border:0; color:#4286f4; font-weight:bold;">
+                </p>
+                <div id="slider-range-search"></div>
+
+                <script>
+                    $(function(){
+                        $( "#slider-range-search" ).slider({
+                            range: true,
+                            min: 2000,
+                            max: 11000,
+                            values: [ 3000, 7000 ],
+                            step:100,
+                            slide: function( event, ui ) {
+                                $( "#amount-search" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                            }
+                        });
+                        $( "#amount-search" ).val( "$" + $( "#slider-range-search" ).slider( "values", 0 ) +
+                            " - $" + $( "#slider-range-search" ).slider( "values", 1 ) );
+                        $('#slider-range-search').hide();
+                        $("#amount-search").hide();
+                        $("#amount-search-label").hide();
+
+                    });
+                </script>
+
+                <script>
+                    var mode = 0;
+                    $('#toggle').click(function(){
+                        if(mode==0){
+                            $('#searchinput').toggle();
+                            $('#slider-range-search').toggle();
+                            $("#amount-search").toggle();
+                            $("#amount-search-label").toggle();
+                            $(this).text("依關鍵字")
+                            mode=1;
+                        }
+                        else{
+                            $('#searchinput').toggle();
+                            $('#slider-range-search').toggle();
+                            $("#amount-search").toggle();
+                            $("#amount-search-label").toggle();
+                            $(this).text("依實價")
+                            mode=0;
+                        }
+
+
+                    });
+                </script>
         </div>
         <div class="col-md-2">
             <button type="submit" class="btn btn-default searchbox">搜尋</button>

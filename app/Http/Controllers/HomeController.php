@@ -15,9 +15,9 @@ class HomeController extends Controller
         $row_per_page = 12 ;
 //        $ObjectPaginate = NewObject::OrderBy('oid','desc')->paginate($row_per_page);
 
-
+	    $amount=$request->amount;
         $keyword = $request->input('description');
-        if($keyword!=""){
+        if($keyword!=""&&){
 	        $ObjectAll =   NewObject::OrderBy('oid','desc')->where('description','like','%'.$keyword.'%')->paginate($row_per_page);
         }
         else{
