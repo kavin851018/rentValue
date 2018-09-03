@@ -131,7 +131,8 @@
                     </div>
 
                 </div>
-                <div class="modal-body " style="white-space:pre-line;">{{$Object->description}}</div>
+                <div class="modal-body ">{!! $Object->description !!}</div>
+                {{--<div class="modal-body " style="white-space:pre-line;">{{$Object->description}}</div>--}}
                 <div class="modal-body">
                     <p>
                         <input type="hidden" name="_token"  value="{{csrf_token()}}">

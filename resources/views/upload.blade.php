@@ -15,6 +15,14 @@
 
     <!-- BootstrapValidator JS -->
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.0/js/bootstrapValidator.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://editor-latest.s3.amazonaws.com/css/froala_editor.pkgd.min.css"/>
+    <link rel="stylesheet" href="https://editor-latest.s3.amazonaws.com/css/froala_style.min.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+    <script type="text/javascript" src="https://editor-latest.s3.amazonaws.com/js/froala_editor.pkgd.min.js">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
 @endsection
 @section('style')
 <style>
@@ -68,6 +76,8 @@
 
             $('.custom-file-label').html(fileName);
         });
+
+        $('textarea#froala-editor').froalaEditor();
     </script>
 @endsection
 @section('description')
@@ -102,7 +112,7 @@
                 </div>
                 <div class="form-group">
                     <label for="description">居住情況</label>
-                    <textarea class="form-control" rows="5" id="description" name="description" ></textarea>
+                    <textarea  class="form-control" rows="5" id="froala-editor" name="description" ></textarea>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="送出" name="send">
