@@ -106,7 +106,7 @@
 
                 <div class="form-group">
                     <label for="price">實際租金</label>
-                    <input type="number" class="form-control" id="price" name="price">
+                    <input type="number" class="form-control" max="11000" min="0"  id="price" name="price">
                 </div>
                 <div class="form-group">
                     <label for="description">居住情況</label>

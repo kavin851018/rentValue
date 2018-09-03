@@ -17,19 +17,20 @@ class HomeController extends Controller
 
 	    $amount=$request->amount;
         $keyword = $request->input('description');
-        if($keyword!=""&&$amount!=""){
+        if($keyword!=""&&$amount!=""){//只要有關鍵字就會只依照關鍵字
 	        $ObjectAll =   NewObject::OrderBy('oid','desc')->where('description','like','%'.$keyword.'%')->paginate($row_per_page);
         }
-        else if($keyword==""&&$amount!=""){
+        else if($keyword==""&&$amount!=""){//沒有關鍵字就會依照價格區間  使用者在空關鍵字情況下也沒設定區間，直接按搜索 就會以預設的價格區間進行搜索 此時有超過預設最大值的物件不會出現
 	        $new = explode("-",$amount);
 	        $new[0]=trim($new[0]);
 	        $new[1]=trim($new[1]);
 	        $lowerprice=explode("$",$new[0])[1];
 	        $higherprice=explode("$",$new[1])[1];
-	        echo $lowerprice;
+//	        echo $lowerprice;
 	        $ObjectAll =   NewObject::OrderBy('oid','desc')->whereBetween('price', array($lowerprice, $higherprice))->paginate($row_per_page);
         }
         else{
+        	//第一次進入首頁時
 	        $ObjectAll = NewObject::OrderBy('oid','desc')->paginate($row_per_page);
         }
 
