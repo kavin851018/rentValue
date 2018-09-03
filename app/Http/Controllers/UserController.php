@@ -167,8 +167,8 @@ class UserController extends Controller
 	    return view('manage',$binding);
     }
     public function deleteObject(Request $request){
-//    	$object = NewObject::find($request->oid);
-//    	$object->delete();
+    	$object = NewObject::find($request->oid);
+    	$object->delete();
     	$data['success']="true";
     	$data['test']="ok";
 	    echo json_encode($data);

@@ -44,7 +44,7 @@
     <div class="row">
         @foreach($ObjectAll as $Object)
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-sm-6 col-md-4 col-lg-3" id="div-{{$Object->oid}}">
                 @if($Object->lowerAvg!=0)
                     <h5 id="price-{{$Object->oid}}">平均低價: ${{$Object->lowerAvg}}<br>平均高價: ${{$Object->higherAvg}}   </h5>
                 @else
@@ -166,7 +166,7 @@
                         }).done(function(data){
                             console.log(data.success);
                             if(data.success){
-                                alert(1);
+                                $("#div-{{$Object->oid}}").remove();
                             }
                             else{
                                 alert(2);
