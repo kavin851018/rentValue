@@ -23,6 +23,10 @@
             width:300px;
             height:180px;
         }
+
+        .searchbox{
+            margin-top:20px;
+        }
     </style>
     @endsection
 
@@ -40,11 +44,11 @@
         <div class="col-md-6">
             <form>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="description" placeholder="輸入關鍵字搜索" value="{{$keyword}}"/>
+                    <input type="text" class="form-control searchbox" name="description" placeholder="輸入關鍵字搜索" value="{{$keyword}}"/>
                 </div>
         </div>
         <div class="col-md-2">
-            <button type="submit" class="btn btn-default">搜尋</button>
+            <button type="submit" class="btn btn-default searchbox">搜尋</button>
             </form>
         </div>
     </div>
