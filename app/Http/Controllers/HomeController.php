@@ -81,5 +81,18 @@ class HomeController extends Controller
 
     }
 
+    public function searchPage(Request $request){
+		$description = $request->input('description');
+
+		$result =   NewObject::OrderBy('oid','desc')->where('description','like','%'.$description.'%')->get();
+//		echo $description;
+//		print($result);
+
+
+		$binding = ["result"=>$result];
+
+     	return view('search',$binding);
+	}
+
 
 }

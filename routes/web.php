@@ -53,3 +53,4 @@ Route::group(['prefix'=>'user'],function(){
 });
 
 Route::get('/getIP','UserController@getIP');
+Route::get('/index/search','HomeController@searchPage');
